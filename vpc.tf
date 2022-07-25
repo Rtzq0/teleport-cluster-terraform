@@ -56,3 +56,14 @@ locals {
   proxy_cidr = cidrsubnet(var.vpc_cidr, 4, var.az_subnet_type.proxy)
 }
 
+output "auth_subnets" {
+  value = [for subnet in aws_subnet.auth : subnet.id]
+}
+
+output "pub_subnets" {
+  value = [for subnet in aws_subnet.public : subnet.id]
+}
+
+output "node_subnets" {
+  value = [for subnet in aws_subnet.node : subnet.id]
+}

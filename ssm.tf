@@ -6,7 +6,7 @@ resource "aws_ssm_parameter" "license" {
   count     = var.license_path != "" ? 1 : 0
   name      = "/teleport/${var.cluster_name}/license"
   type      = "SecureString"
-  value     = data.local_file.license.content
+  value     = data.local_sensitive_file.license.content
   overwrite = true
 }
 

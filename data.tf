@@ -22,6 +22,6 @@ data "aws_kms_alias" "ssm" {
 }
 
 # Pick up the license path and make it accessible as a file
-data "local_file" "license" {
+data "local_sensitive_file" "license" {
   filename = var.license_path
 }
